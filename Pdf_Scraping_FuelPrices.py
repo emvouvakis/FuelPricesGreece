@@ -21,7 +21,6 @@ import numpy as np
 import sys
 import pickle
 import warnings
-from tkinter import Tk, filedialog
 
 def ProgressBar(value,max,label):
     n_bar = 40
@@ -33,11 +32,8 @@ def ProgressBar(value,max,label):
     sys.stdout.write(f"{label.ljust(10)} | [{bar:{n_bar}s}] {int(100 * j)}% ")
     sys.stdout.flush()
 
-'''Select folder'''
-root = Tk()
-root.withdraw()
-to_folder_location = filedialog.askdirectory()
-from_folder_location = to_folder_location.replace("/", "\\")
+print('**Initializing Pdf Scraping**')
+from Web_Scraping_FuelPrices import to_folder_location, from_folder_location
 warnings.filterwarnings("ignore")
 
 
@@ -190,4 +186,4 @@ all_data.columns=['Unleaded 95','Unleaded 100','Super','Diesel','Autogas']
 
 os.chdir(to_folder_location)
 all_data.to_csv('nomos.csv')
-print("Completed.")
+print("Created nomos.csv")
