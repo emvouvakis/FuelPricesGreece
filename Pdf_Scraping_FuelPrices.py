@@ -113,7 +113,7 @@ for i in range(len(filenames)):
             ProgressBar(i,len(filenames)-1,"Completed:")
     else:
         ProgressBar(i,len(filenames)-1,"Completed:")
-print("Added",number,"Files")
+print(f"Added {number} Files")
 
 '''Saving desired lists in order to update files in the future'''
 os.chdir(to_folder_location+"/FuelPriceData")

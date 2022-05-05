@@ -60,7 +60,7 @@ response = requests.get(url)
 soup= BeautifulSoup(response.text, "html.parser")     
 
 file_counter=0
-print('Chosen Directory: '+to_folder_location)
+print(f'Chosen Directory: {to_folder_location}')
 print('**Initializing Web Scraping**')
 
 print('Downloading files...')
