@@ -18,19 +18,10 @@ import os
 import pandas as pd
 from datetime import datetime
 import numpy as np
-import sys
 import pickle
 import warnings
+from tqdm.auto import tqdm
 
-def ProgressBar(value,max,label):
-    n_bar = 40
-    j= value/max
-    sys.stdout.write('\r')
-    bar = '█' * int(n_bar * j)
-    bar = bar + '-' * int(n_bar * (1-j))
-
-    sys.stdout.write(f"{label.ljust(10)} | [{bar:{n_bar}s}] {int(100 * j)}% ")
-    sys.stdout.flush()
 
 print('**Initializing Pdf Scraping**')
 from Web_Scraping_FuelPrices import to_folder_location, from_folder_location
@@ -82,7 +73,7 @@ while others have the table in two parts.
 os.chdir(to_folder_location+"/FuelPriceNomos")
 filenames =os.listdir()
 number=0
-for i in range(len(filenames)):
+for i in tqdm(range(len(filenames))):
 
     d=filenames[i].split(".")[0]
     d1=datetime.strptime(d, "%d%m%Y").date()
@@ -109,10 +100,6 @@ for i in range(len(filenames)):
             temp_table=camelot.read_pdf(filenames[i])
             pdfs.append(temp_table[0].df)
 
-        finally:
-            ProgressBar(i,len(filenames)-1,"Completed:")
-    else:
-        ProgressBar(i,len(filenames)-1,"Completed:")
 print(f"Added {number} Files")
 
 '''Saving desired lists in order to update files in the future'''
@@ -150,7 +137,7 @@ for i in range(len(pdfs)):
 '''Cleaning process'''
 print("Cleaning the data...")
 errors2_index=[]
-for i in range(len(dfs)):
+for i in tqdm(range(len(dfs))):
     try:
         dfs[i][0]=['N. ATTIKIS','N. ETOLOAKARNANIAS','N. ARGOLIDAS','N. ARKADIAS','N. ARTAS','N. ACHAIAS','N. VIOTIAS','N. GREVENON','N. DRAMAS',
         'N. DODEKANISON','N. EVROU','N. EVVIAS','N. EVRYTANIAS','N. ZAKYNTHOU','N. ILIAS','N. IMATHIAS','N. IRAKLIOU','N. THESPROTIAS','N. THESSALONIKIS',

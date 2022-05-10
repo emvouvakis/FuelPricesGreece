@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup
 from tkinter import Tk, filedialog
 from datetime import datetime
 import pickle
+from tqdm.auto import tqdm
 
 url = 'http://www.fuelprices.gr/deltia_dn.view'
 
@@ -64,7 +65,7 @@ print(f'Chosen Directory: {to_folder_location}')
 print('**Initializing Web Scraping**')
 
 print('Downloading files...')
-for link in soup.select("a[href$='.pdf']"):
+for link in tqdm(soup.select("a[href$='.pdf']")):
 
     '''Naming the pdf files using the last portion of each link '''
     filename = os.path.join(from_folder_location_nomos,link['href'].split('NOMO')[-1]).replace("_","")
