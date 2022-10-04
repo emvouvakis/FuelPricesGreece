@@ -5,3 +5,5 @@ streamlit-folium==0.6.15
 plotly==5.10.0
 scikit-learn==1.1.2
 sktime==0.13.2
+statsmodels==0.13.2
+darts==0.21.0
