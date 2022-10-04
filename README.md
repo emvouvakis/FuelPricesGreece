@@ -11,7 +11,7 @@ The pdfs obtained contain daily prices of fuels for every prefecture of Greece.
 * **Explore and Predict with Interactive Dashboard**
 
 1. Execute: ` streamlit run "01_⛽_Exploratory Analysis.py" `
-2. Expore:
+2. Explore:
 ![explore](https://github.com/emvouvakis/FuelPricesGreece/blob/main/Fuel/photos/explore.png)
 ![explore2](https://github.com/emvouvakis/FuelPricesGreece/blob/main/Fuel/photos/geo.png)
 3. Predict:
